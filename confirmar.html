@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <link rel="stylesheet" href="css/animate.min.css">
+    <title>MAX</title>
+</head>
+<body>
+    <div id="map" style="height: 330px;" class="confirm-map">
+        <button class="btn-localizacao-atual" style="left: 5%;top: 5%;" onclick="$('.menu').css('display','flex')">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="menu animate__animated animate__fadeInLeft">
+            <div class="menu-item" onclick="location.href='cartoes.html'">
+                <label for="">Cartões </label>
+                <i class="fa fa-credit-card"></i>
+            </div>
+            <div class="menu-item" onclick="$('.menu').css('display','none')">
+                <label for="">Fechar </label>
+                <i class="fa fa-window-close"></i>
+            </div>
+            <div class="menu-item" onclick="logOut()">
+                <label for="">Sair </label>
+                <i class="fa fa-door-open"></i>
+            </div>
+        </div>
+        <button class="btn-localizacao-atual" style="top: 40%;" onclick="pegarLocalizacaoAtual()">
+            <i class="fa fa-location-arrow"></i>
+        </button>
+    </div>
+    <div class="confirmar-box"> 
+        <label style="margin-top:5px;">Selecione e confime a encomenda</label>
+        <div class="caixa-item">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                    <path
+                        d="M20.1366 15.9578C18.3294 15.9578 16.8593 17.428 16.8593 19.2352C16.8593 21.0423 18.3294 22.5125 20.1366 22.5125C21.944 22.5125 23.4139 21.0423 23.4139 19.2352C23.4139 17.428 21.9437 15.9578 20.1366 15.9578ZM20.1366 20.8738C19.2329 20.8738 18.4979 20.1389 18.4979 19.2352C18.4979 18.3314 19.2329 17.5965 20.1366 17.5965C21.0403 17.5965 21.7752 18.3314 21.7752 19.2352C21.7752 20.1389 21.0403 20.8738 20.1366 20.8738Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M8.93906 15.9578C7.13191 15.9578 5.66174 17.428 5.66174 19.2352C5.66174 21.0423 7.13191 22.5125 8.93906 22.5125C10.7462 22.5125 12.2164 21.0423 12.2164 19.2352C12.2164 17.428 10.7462 15.9578 8.93906 15.9578ZM8.93906 20.8738C8.03536 20.8738 7.3004 20.1389 7.3004 19.2352C7.3004 18.3314 8.03536 17.5965 8.93906 17.5965C9.84251 17.5965 10.5777 18.3314 10.5777 19.2352C10.5777 20.1389 9.84277 20.8738 8.93906 20.8738Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M22.3436 6.57723C22.2043 6.30057 21.9211 6.12604 21.6114 6.12604H17.2963V7.7647H21.1061L23.3371 12.2022L24.8016 11.4658L22.3436 6.57723Z"
+                        fill="#B3ADAA" />
+                    <path d="M17.6786 18.4433H11.479V20.082H17.6786V18.4433Z" fill="#B3ADAA" />
+                    <path
+                        d="M6.48101 18.4433H3.64072C3.18815 18.4433 2.82141 18.8101 2.82141 19.2626C2.82141 19.7152 3.1882 20.0819 3.64072 20.0819H6.48106C6.93363 20.0819 7.30037 19.7151 7.30037 19.2626C7.30037 18.81 6.93357 18.4433 6.48101 18.4433Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M26.3279 13.4344L24.7163 11.3587C24.5615 11.1588 24.3225 11.0419 24.0693 11.0419H18.1155V5.30664C18.1155 4.85408 17.7487 4.48734 17.2962 4.48734H3.64072C3.18815 4.48734 2.82141 4.85413 2.82141 5.30664C2.82141 5.75915 3.1882 6.12594 3.64072 6.12594H16.4769V11.8612C16.4769 12.3138 16.8437 12.6805 17.2962 12.6805H23.6681L24.8613 14.2176V18.4431H22.5945C22.1419 18.4431 21.7752 18.8099 21.7752 19.2624C21.7752 19.715 22.142 20.0817 22.5945 20.0817H25.6806C26.1332 20.0817 26.4999 19.715 26.5 19.2624V13.9369C26.5 13.755 26.4393 13.578 26.3279 13.4344Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M6.4265 14.2922H2.65756C2.205 14.2922 1.83826 14.659 1.83826 15.1115C1.83826 15.564 2.20505 15.9308 2.65756 15.9308H6.42644C6.87901 15.9308 7.24575 15.564 7.24575 15.1115C7.2458 14.659 6.87901 14.2922 6.4265 14.2922Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M8.31092 11.0694H1.3193C0.866793 11.0694 0.5 11.4362 0.5 11.8887C0.5 12.3413 0.866793 12.708 1.3193 12.708H8.31092C8.76348 12.708 9.13022 12.3412 9.13022 11.8887C9.13022 11.4362 8.76348 11.0694 8.31092 11.0694Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M9.64917 7.84677H2.65756C2.205 7.84677 1.83826 8.21356 1.83826 8.66608C1.83826 9.11864 2.20505 9.48538 2.65756 9.48538H9.64917C10.1017 9.48538 10.4685 9.11859 10.4685 8.66608C10.4685 8.21356 10.1017 7.84677 9.64917 7.84677Z"
+                        fill="#B3ADAA" />
+                </g>
+                <defs>
+                    <clipPath id="clip0">
+                        <rect width="26" height="26" fill="white" transform="translate(0.5 0.5)" />
+                    </clipPath>
+                </defs>
+            </svg>
+          <select onchange="buscarListaDeEntregadores();buscarListaDeCartoes()" id="tipo_de_entrega">
+              <option value="">Selecione o tipo de entrega</option>
+            <option value="carro"> Moto</option>
+            <option value="moto"> Carro</option>
+            <option value="documentos"> Caminhão</option>
+          </select>
+        </div>
+        <div class="caixa-item">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                    <path
+                        d="M13.3147 13.0243C15.0353 13.0243 16.5252 12.4072 17.7426 11.1896C18.9599 9.97225 19.577 8.48274 19.577 6.76194C19.577 5.04173 18.9599 3.55202 17.7424 2.33427C16.5248 1.11711 15.0351 0.5 13.3147 0.5C11.5939 0.5 10.1044 1.11711 8.88703 2.33447C7.66968 3.55182 7.05237 5.04153 7.05237 6.76194C7.05237 8.48274 7.66968 9.97245 8.88723 11.1898C10.1048 12.407 11.5945 13.0243 13.3147 13.0243Z"
+                        fill="#B3ADAA" />
+                    <path
+                        d="M24.2721 20.4927C24.237 19.986 24.166 19.4334 24.0614 18.8498C23.9559 18.2619 23.82 17.7061 23.6574 17.198C23.4893 16.673 23.2608 16.1545 22.9784 15.6576C22.6852 15.1418 22.3408 14.6927 21.9544 14.3232C21.5503 13.9366 21.0556 13.6257 20.4835 13.399C19.9134 13.1734 19.2817 13.0592 18.6058 13.0592C18.3404 13.0592 18.0837 13.1681 17.588 13.4908C17.2829 13.6898 16.9261 13.9199 16.5278 14.1744C16.1872 14.3914 15.7258 14.5947 15.1559 14.7788C14.5999 14.9587 14.0353 15.05 13.4781 15.05C12.9209 15.05 12.3566 14.9587 11.8 14.7788C11.2307 14.5949 10.7693 14.3916 10.4291 14.1746C10.0345 13.9225 9.67749 13.6924 9.36785 13.4906C8.87273 13.1679 8.61585 13.059 8.35044 13.059C7.67442 13.059 7.04283 13.1734 6.47293 13.3992C5.90125 13.6255 5.40633 13.9364 5.00187 14.3234C4.61565 14.6931 4.2711 15.142 3.97831 15.6576C3.69604 16.1545 3.46753 16.6728 3.29931 17.1982C3.13685 17.7062 3.00098 18.2619 2.89545 18.8498C2.79091 19.4326 2.71989 19.9854 2.68478 20.4933C2.65027 20.9908 2.63281 21.5071 2.63281 22.0286C2.63281 23.3858 3.06425 24.4845 3.91503 25.2948C4.7553 26.0944 5.86713 26.5001 7.21917 26.5001H19.7383C21.0903 26.5001 22.2018 26.0946 23.0422 25.2948C23.8932 24.4851 24.3247 23.3862 24.3247 22.0284C24.3245 21.5045 24.3068 20.9878 24.2721 20.4927Z"
+                        fill="#B3ADAA" />
+                </g>
+                <defs>
+                    <clipPath id="clip0">
+                        <rect width="25.9999" height="26" fill="white" transform="translate(0.5 0.5)" />
+                    </clipPath>
+                </defs>
+            </svg>
+            <select id="selecionar_entregador">
+                <option value="">Selecione o entregador</option>
+                <option value="">Ronaldo</option>
+                <option value="">Pelé</option>
+                <option value="">Neymar</option>
+            </select>
+        </div>
+        <div class="caixa-item">
+            <svg width="27" height="19" viewBox="0 0 27 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M26.5 4.71484V3.34375C26.5 1.77319 25.2268 0.5 23.6562 0.5H3.34375C1.77319 0.5 0.5 1.77319 0.5 3.34375V4.71484C0.5 4.85505 0.613699 4.96875 0.753906 4.96875H26.2461C26.3863 4.96875 26.5 4.85505 26.5 4.71484Z"
+                    fill="#B3ADAA" />
+                <path
+                    d="M0.5 6.84766V15.5312C0.5 17.1018 1.77319 18.375 3.34375 18.375H23.6562C25.2268 18.375 26.5 17.1018 26.5 15.5312V6.84766C26.5 6.70745 26.3863 6.59375 26.2461 6.59375H0.753906C0.613699 6.59375 0.5 6.70745 0.5 6.84766ZM7 13.5C7 13.9487 6.6362 14.3125 6.1875 14.3125H5.375C4.9263 14.3125 4.5625 13.9487 4.5625 13.5V12.6875C4.5625 12.2388 4.9263 11.875 5.375 11.875H6.1875C6.6362 11.875 7 12.2388 7 12.6875V13.5Z"
+                    fill="#B3ADAA" />
+            </svg>
+
+            <select name="" id="selecionar-cartao">
+                <option value="">Selecione o método de pagamento</option>
+                <option value="">Débito</option>
+                <option value="">Crédito</option>
+            </select>
+        </div>
+        <div class="modal-preco-da-corrida">
+            <div class="modal-corrida-content animate__animated animate__fadeInUp">
+                Valor da Corrida <br>
+                <h1 class="valor">R$25</h1>
+                <button class="btn-confirmar-valor-da-encomenda"onclick="confirmarEncomenda()">Confirmar <i class="fa fa-check"></i></button>
+            </div>
+        </div>
+        <button class="btn-confirmar-encomenda" onclick="buscarPrecoDaCorrida()">Confirmar Encomenda</button>
+    </div>
+    <div class="processamento-container">
+        <div>
+            <img src="img/delivery-car.png" alt="">
+        </div>
+        <div>
+            <img src="img/spinner.gif" width="90">
+        </div>
+        <div>
+            <span>Processando aguarde...</span>
+        </div>
+
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/max.js"></script>
+    <script>
+        var map = L.map('map').setView([-23.55052, -46.633309], 16);
+        var layerGroup = L.layerGroup().addTo(map);
+        L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            zoomControl: false
+        }).addTo(map);
+
+        $(function () {
+            pegarLocalizacaoAtual()
+        })
+    </script>
+</body>
+
+</html>

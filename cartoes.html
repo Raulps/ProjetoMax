@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <title>MAX</title>
+</head>
+
+<body class="corpo-cartoes">
+    <div class="header-text-cartoes">
+        <h1>Opções de pagamento</h1>
+    </div>
+    <div class="card-container">
+    <div class="card-item" onclick="$('.modal-adicionar-cartao').css('display','flex')">
+        <i class="fa fa-credit-card"></i>
+        <label for="">Adicionar cartão</label>
+    </div>
+    </div>
+    <div class="modal-adicionar-cartao">
+        <div class="modal-adicionar-cartao-content animate__animated animate__fadeInUp">
+            <center>
+                <h2>Dados do cartão</h2>
+            </center>
+            <input type="text" id="cartao" placeholder="Numero do cartão">
+            <input type="text" id="nomee" placeholder="Nome impresso no cartão">
+            <input type="text" id="data" maxlength="5" placeholder="Data de validade">
+            <select name="" id="tipo">
+                <option>Selecione o tipo de cartão</option>
+                <option value="Debito">Debito</option>
+                <option value="Credito">Credito</option>
+            </select>
+            <select name="" id="bandeira">
+                <option>Selecione a bandeira</option>
+                <option value="Mastercard">Mastercard</option>
+                <option value="Visa">Visa</option>
+            </select>
+            <input type="text" placeholder="CVV" id="CVV">
+            <button onclick="adicionarCartao()">Guardar <i class="fa fa-check"></i></button>
+            <button onclick="$('.modal-adicionar-cartao').css('display','none')">Fechar <i class="fa fa-window-close"></i></button>
+        </div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/max.js"></script>
+    <script>
+        $(function(){
+            mostrarCartoes()
+        })
+    </script>
+</body>
+
+</html>

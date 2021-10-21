@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <title>MAX</title>
+</head>
+
+<body>
+    <div id="map" style="height: 100%;position: fixed;" class="confirm-map">
+        <div class="entregador-info">
+            <img src="img/carnes.png" id="imagem" width="70px" height="70px" style="border-radius: 100%;"><br>
+            <label id="nome-pro">Processando</label>
+            <label>Veiculo: <b id="veiculo">Processando</b></label>
+            <label for="">Placa: <b id="placa">Processando</b> </label><br>
+            <div class="contactar-entregador">
+                <a id="ligar-entregador">Ligar <i class="fa fa-phone"></i></a>
+                <a id="enviar-mensagem-entregador">Enviar Mensagem <i class="fa fa-comments"></i></a>
+            </div>
+        </div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/max.js"></script>
+    <script>
+        var map = L.map('map').setView([-23.55052, -46.633309], 16);
+        var layerGroup = L.layerGroup().addTo(map);
+        L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            zoomControl: false
+        }).addTo(map);
+        var layerGroup = L.layerGroup().addTo(map);
+        $(function () {
+            buscarInformacoesDoEntregador()
+            setInterval(() => {
+                buscarLocalizacaoDoEntregador()
+            }, 2000);
+        })
+    </script>
+</body>
+
+</html>

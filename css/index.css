@@ -1,0 +1,644 @@
+@font-face{
+    src: url("Jost.ttf");
+    font-family: Jost;
+}
+*{
+    font-family: Jost;
+    padding: 0;
+    margin: 0;
+}
+
+.splash-screen{
+    background: radial-gradient(107.35% 50% at 50% 50%, #FFFFFF 0%, #FFC187 100%);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.splash-screen label{
+    margin-top: 10px;
+    font-size: 25px;
+}
+
+.preencher-celular-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 30em;
+}
+.preencher-celular-container label{
+    text-align: center;
+    font-size: 20px;
+}
+
+/*---Corpo da página entregar---*/
+.corpo-entregar {
+    background-color: #fdebd7fe;
+    color:rgba(0, 0, 0, 0.774);
+}
+
+.corpo-receber {
+    background-color: #fdebd7fe;
+    color:rgba(0, 0, 0, 0.774);
+}
+
+#nome, #numero {
+    background-color: orange; /* cor da caixa de texto */
+    color: black; /* cor do texto */
+    border-radius: 1em; /* borda da caixa de texto */
+    width: 90%; /* largura da caixa */
+    padding-left: 15px; /* espaçamento dentro da caixa */
+}
+
+.input-celular{
+    display: flex;
+    border-bottom: solid orange 2px;
+    padding: 10px;
+    margin-top: 50px;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    color:rgba(0, 0, 0, 0.774);
+}
+.input-celular #icon-select{
+    margin-left: 10px;
+}
+.input-celular #country-number{
+    margin-left: 10px;
+}
+.input-celular input{
+    border:none;
+    outline: none;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.btn-confirmar{
+    margin-top: 50px;
+}
+
+/*---alteração no background---*/
+.btn-confirmar button{
+    text-align: center;
+    padding: 15px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #60d265;
+    border:none;
+    color: white;
+    font-size: 20px;
+}
+
+.tela-comecar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.tela-comecar label{
+    font-size: 30px;
+    color: gray;
+}
+
+.tela-comecar div{
+    text-align: center;
+    margin-top: 30px;
+}
+.tela-comecar button{
+    margin-top: 30px;
+    padding: 15px;
+    width: 55%;
+    background-color: orange;
+    border:none;
+    border-radius: 10px;
+    color: white;
+}
+
+/*Dashboard*/
+.header{
+    background-color: #fdebd7fe;
+    padding: 10px;
+}
+.menu-button{
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border:none;
+    font-size: 20px;
+    border-radius: 100%;
+}
+
+/*---Cor do texto no dashboard---*/
+.header #header-text-1{
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 20px;
+    color:rgba(0, 0, 0, 0.774)
+}
+
+/*---Cor do texto no dashboard---*/
+#header-text-2 {
+    color:rgba(0, 0, 0, 0.774)
+}
+
+.leaflet-control-zoom {
+        display: none;
+    }
+
+.body-buttons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.body-buttons-container div{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: center;
+}
+.body-buttons-container div:first-of-type{
+    margin-right: 5px;
+}
+.body-buttons-container div:nth-of-type(2){
+    margin-left: 40px;
+}
+.body-buttons-container .button-img{
+    width: 90px;
+    height: 90px;
+    background-color: #fdebd7fe;
+    border-radius: 20px;
+    box-shadow: 5px 4px 5px 0 rgb(0 0 0 / 10%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body-buttons-container label{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.dashboard-items{
+    margin-top: 20px;
+    position: absolute;
+    width: 100%;
+    height: max-content;
+}
+.dashboard-items label{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+.dashboard-map{
+    border-top: solid orange;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    position: fixed
+}
+
+.btn-localizacao-atual{
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border:none;
+    font-size: 20px;
+    border-radius: 100%;
+    box-shadow: 5px 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    position: fixed;
+    bottom: 2%;
+    right: 5%;
+    z-index: 1000;
+}
+
+.entrega-header-text{
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    color: #665E52;
+    line-height: 1;
+    padding: 5px;
+    text-shadow: 0 0 black;
+}
+
+.selecionar-local-de-entrega{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.endereco-inputs{
+    margin-left: 10px;
+}
+
+.endereco-inputs input{
+    border:none;
+    background: rgba(202, 200, 200, 0.16);
+    color: black; /* cor do texto escrito */
+    border-radius: 10px;
+    width: 259px;
+    height: 38px;
+    outline: none;
+    padding: 5px;
+}
+
+.endereco-inputs input:last-of-type{
+    margin-top: 10px;
+}
+
+.img-ponto {
+    width: 1.2em;
+}
+
+.divisor{
+    margin-top: 20px;
+}
+.list{
+    padding: 10px;
+}
+.list-item{
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.btn-confirmar-endereco{
+    margin-top: 10px;
+    padding: 15px;
+    border:none;
+    border-radius: 10px;
+    background-color: #60d265;
+    color: white;
+    margin-left: 5%;
+    width: 90%;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+}
+
+select{
+    font-family: 'Jost', 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+/*---Alteração na cor de fundo---*/
+#tipo_de_entrega, #selecionar_entregador, #selecionar-cartao {
+    background-color: #5a5a5a;
+}
+
+.confirmar-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.confirmar-box .caixa-item{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(128 128 128 / 13%);
+    border-radius: 45px;
+    margin-top: 5px;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.confirmar-box .caixa-item select{
+    border: none;
+    background: none;
+    width: 90%;
+}
+
+.btn-confirmar-encomenda{
+    margin-top: 8px;
+    color: white;
+    background-color: #60d265;
+    padding: 15px;
+    border:none;
+    border-radius: 14px;
+    width: 70%;
+}
+
+.menu{
+    z-index: 200000000;
+    position: fixed;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 5px 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%), 0 2px 4px -1px rgb(0 0 0 / 30%);
+    top: 20%;
+    height: fit-content;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: none;
+}
+.menu div{
+    display: flex;
+    width: 80px;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items: center;
+    color:rgba(0, 0, 0, 0.774);
+}
+
+.menu div label{
+    font-family: Jost;
+    font-size: 15px;
+}
+
+
+.header-text-cartoes{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.card-container{
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 20px;
+    color: gray;
+}
+
+.card-item{
+    margin-top:15px;
+    display: flex;
+    align-items: center;
+}
+.card-item label{
+    margin-left: 10px;
+    color: black;
+}
+.modal-adicionar-cartao{
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.459);
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-adicionar-cartao-content{
+    background: white;
+    width: 290px;
+    height: 350px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    justify-content: space-between;
+}
+.modal-adicionar-cartao-content input{
+    padding: 5px;
+}
+.modal-adicionar-cartao-content button{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    background-color: #dc2828;
+}
+.modal-adicionar-cartao-content select{
+    padding: 5px;
+}
+.modal-adicionar-cartao-content button:first-of-type{
+    background: #60d265;
+}
+
+.corpo-cartoes {
+    background-color: #fdebd7fe;
+    color:rgba(0, 0, 0, 0.774);
+}
+
+.corpo-login {
+    background-color: #fdebd7fe;
+    color:rgba(0, 0, 0, 0.774)
+}
+
+/*---pagina acompanhar - Processando---*/
+#nome-pro {
+    background-color:rgba(0, 0, 0, 0.774);
+    width: 80%;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.modal-cartao{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.459);
+    left: 0;
+}
+
+.modal-cartao-buttons{
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+}
+.modal-cartao-buttons button{
+    padding: 10px;
+    border:none;
+    border-radius: 4px;
+}
+.modal-cartao-buttons button:first-of-type{
+    background: red;
+}
+.swal-overlay--show-modal .swal-modal{
+    z-index: 30000000000;
+}
+
+.modal-preco-da-corrida{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.418);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-corrida-content{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn-confirmar-valor-da-encomenda{
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 45px;
+    background-color: orange;
+    border:none;
+}
+
+.processamento-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.processamento-container div{
+    margin-top: 15px;
+}
+
+.footer-acompanhar-pedido{
+    background-color: #F99D24;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.footer-acompanhar-pedido span{
+    margin-left: 10px;
+}
+
+.modal-lista-de-corridas{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.418);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-lista-de-corridas .corridas-box{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+.corrida-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.corrida-item button{
+    border:none;
+    border-radius: 45px;
+    padding: 10px;
+    background-color: #F99D24;
+    color: white;
+}
+
+.modal{
+    background-color: rgba(0, 0, 0, 0.219);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+    background-color: white;
+    width: 80%;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content input{
+    width: 90%;
+    padding: 5px;
+}
+
+.modal-content button{
+    margin-top: 10px;
+    width: 95%;
+    padding: 10px;
+    border:none;
+    border-radius: 4px;
+}
+
+/*---alteração na cor---*/
+.modal-content button:first-of-type{
+    background-color: #60d265;
+}
+/*---alteração na cor---*/
+.modal-content button:last-of-type{
+    background-color: #dc2828;
+}
+
+.entregador-info{
+    position: fixed;
+    z-index: 2000000000000000000000000;
+    background-color: white;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.botao-fechar-modal-acompanhar{
+    position: fixed;
+    bottom: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    background: red;
+    color: white;
+    font-size: 30px;
+    border:none;
+}

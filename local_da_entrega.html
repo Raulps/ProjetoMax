@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <title>MAX</title>
+</head>
+
+<body class="corpo-entregar">
+    <div class="entrega-header-text">
+        Escolha o destino da encomenda
+    </div>
+    <div class="selecionar-local-de-entrega">
+        <div>
+            <img src="img/points3.png" alt="" class="img-ponto">
+        </div>
+        <div class="endereco-inputs">
+            <input type="text" placeholder="Origem" id="origem" onclick="mostrarModalDeEnderecos('origem')"><br>
+            <input type="text" placeholder="Destino" id="destino" onclick="mostrarModalDeEnderecos('destino')"><br>
+            
+        </div>
+    </div>
+    
+    <div class="divisor">
+        <hr>
+    </div>
+    <button class="btn-confirmar-endereco" onclick="confirmarSelecaoDeEndereco()">Confirmar</button>
+    <div class="list">
+        <div class="list-item" onclick="$('#definir-casa').css('display','flex')">
+            <i class="fa fa-home"></i>
+            <label id="texto-casa">Definir sua Casa</label>
+        </div>
+        <div class="list-item" onclick="$('#definir-local-de-trabalho').css('display','flex')">
+            <i class="fa fa-briefcase"></i>
+            <label id="texto-local-de-trabalho">Definir local de trabalho</label>
+        </div>
+    </div>
+    <div class="modal" id="definir-casa">
+        <div class="modal-content animate__animated animate__fadeInUp">
+            <h2>Defina a sua casa</h2>
+            <input type="text" id="txtCasa" placeholder="Endereço da sua casa">
+            <button onclick="definirCasa()">Guardar</button>
+            <button onclick="$('.modal').css('display','none')">Fechar</button>
+        </div>
+    </div>
+
+    <div class="modal" id="definir-local-de-trabalho">
+        <div class="modal-content animate__animated animate__fadeInUp">
+            <h2>Defina local de trabalho</h2>
+            <input type="text" placeholder="Endereço do local de trabalho" id="txtLocalDeTrabalho">
+            <button onclick="definirLocalDeTrabalho()">Guardar</button>
+            <button onclick="$('.modal').css('display','none')">Fechar</button>
+        </div>
+    </div>
+
+
+    <div class="modal" id="enderecos">
+        <div class="modal-content animate__animated animate__fadeInUp">
+            <br>
+            <a onclick="selecionarEnderecoNoModal('casa')">Usar endereço de casa <i class="fa fa-home"></i></a><br>
+            <a onclick="selecionarEnderecoNoModal('trabalho')">Usar endereço do trabalho <i class="fa fa-briefcase"></i></a>
+            <button onclick="$('.modal').css('display','none')">Fechar</button>
+        </div>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/max.js"></script>
+    <script> 
+    $(() =>{
+        verificarExistenciaDeEndereco();
+    })
+    </script>
+</body>
+
+</html>

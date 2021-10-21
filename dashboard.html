@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <title>MAX</title>
+</head>
+
+<body>
+    <div class="header">
+        <button class="menu-button" onclick="$('.menu').css('display','flex')">
+            <i class="fa fa-bars"></i>
+        </button>
+        <div>
+            <br>
+            <label id="header-text-1">
+                Entregue e receba suas <br>
+                encomendas
+            </label><br>
+            <br>
+            <label id="header-text-2">
+                Use a MAX para fazer qualquer entrega ou receber qualquer
+                encomenda que você precisar.
+
+            </label>
+        </div>
+    </div>
+    <div class="menu animate__animated animate__fadeInLeft">
+        <div class="menu-item" onclick="location.href='cartoes.html'">
+            <label for="">Cartões </label>
+            <i class="fa fa-credit-card"></i>
+        </div>
+        <div class="menu-item" onclick="$('.menu').css('display','none')">
+            <label for="">Fechar </label>
+            <i class="fa fa-window-close"></i>
+        </div>
+        <div class="menu-item" onclick="logOut()">
+            <label for="">Sair </label>
+            <i class="fa fa-door-open"></i>
+        </div>
+    </div>
+    <div class="body-buttons-container">
+        <div>
+            <div class="button-img" onclick="location.href='entregar.html'">
+                <img src="img/delivery-man.png" width="50px">
+            </div>
+            <label for="">Entregar</label>
+        </div>
+        <div>
+           <div class="button-img" onclick="location.href='receber.html'">
+                <img src="img/delivery-box.png" width="50px">
+            </div>
+            <label for="">Receber</label>
+        </div>
+    </div>
+    <div class="dashboard-items">
+        <label for="">Próximo de você</label>
+        <div class="dashboard-map" id="map">
+            <button class="btn-localizacao-atual" onclick="pegarLocalizacaoAtual()">
+                <i class="fa fa-location-arrow"></i>
+            </button>
+        </div>
+    </div>
+    <div class="modal-lista-de-corridas">
+        <div class="corridas-box animate__animated animate__fadeInUp">
+            <div class="corrida-item">
+                <span>Em processamento...</span>
+                <button>Em processamento...</button>
+            </div>
+            <div class="corrida-item">
+                <span>Em processamento...</span>
+                <button>Em processamento...</button>
+            </div>
+        </div>
+        <button class="botao-fechar-modal-acompanhar" onclick="$('.modal-lista-de-corridas').css('display','none')">X</button>
+    </div>
+    <div class="footer-acompanhar-pedido animate__animated animate__fadeInUp" onclick="buscarListaDeCorridasActivas()">
+        <img src="img/delivery-car-white.png" alt=""><span>Acompanhar encomenda</span>
+    </div>
+    <script src="cordova.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/max.js"></script>
+    <script>
+        var map = L.map('map').setView([-12.77657, 15.73463], 16);
+        var layerGroup = L.layerGroup().addTo(map);
+        L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            zoomControl: false
+        }).addTo(map);
+        $(function(){
+            pegarLocalizacaoAtual()
+            buscarEstadoDeCorridas()
+        })
+    </script>
+</body>
+
+</html>
